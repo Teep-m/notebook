@@ -77,10 +77,9 @@ export default function Menubar({ editor }: IMenubarProp) {
           <div className='group-item'>
             {group.map((item) => {
               return (
-                <button className='menu-item'>
+                <button className='menu-item' onClick={item.onClick}>
                   <i
                     className={`ri-${item.icon} ${item.isActive}`}
-                    onClick={item.onClick}
                   ></i>
                 </button>
               );
