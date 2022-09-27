@@ -35,12 +35,12 @@ export default function Menubar({ editor }: IMenubarProp) {
     ],
     [
       {
-        icon: "h1",
+        icon: "h-1",
         onClick: () => getFocus().toggleHeading({ level: 1 }),
         isActive: isActive("heading", { level: 1 }),
       },
       {
-        icon: "h2",
+        icon: "h-2",
         onClick: () => getFocus().toggleHeading({ level: 2 }),
         isActive: isActive("heading", { level: 2 }),
       },
@@ -54,8 +54,36 @@ export default function Menubar({ editor }: IMenubarProp) {
         onClick: () => getFocus().toggleOrderedList(),
         isActive: isActive("orderedList"),
       },
+      {
+        icon: "code-box-line",
+        onClick: () => getFocus().toggleCodeBlock(),
+        isActive: isActive("codeBlock"),
+      },
+    ],
+    [
+      {
+        icon: "double-quotes-l",
+        onClick: () => getFocus().toggleBlockquote(),
+        isActive: isActive("blockquote"),
+      },
+      { icon: "separator", onClick: () => getFocus().setHorizontalRule() },
     ],
   ];
 
-  return <div>Menubar</div>;
+  return <div className='menu'>
+    {menus.map(group => {
+      return <div className="group-item">
+        {group.map(item => {
+          return <button className='menu-item'>
+            <i
+              className={`ri-${item.icon} ${item.isActive}`}
+              onClick={item.onClick}
+            >
+
+            </i>
+            </button>;
+          })}
+        </div>
+      })}
+    </div>
 }

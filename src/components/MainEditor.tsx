@@ -5,7 +5,7 @@ import Menubar from "./Menubar";
 export default function MainEditor() {
   const editor = useEditor({
     extensions: [StarterKit],
-    content: `<h2>Hello</h2>`,
+    content: ``,
   });
   return (
     <>
